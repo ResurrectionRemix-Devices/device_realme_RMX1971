@@ -2298,6 +2298,7 @@
 
     <path name="voice-rec-mic">
         <path name="handset-mic" />
+        <ctl name="DEC7 Volume" value="106"/>
     </path>
 
     <!--#ifdef VENDOR_EDIT-->
@@ -2308,6 +2309,7 @@
     <!--#endif /* VENDOR_EDIT */-->
 
     <path name="camcorder-mic">
+        <ctl name="DEC7 Volume" value="89"/>
         <ctl name="MicBias_V_Switch" value="V_1P80" />
         <ctl name="ADC1 Volume" value="4" />
         <ctl name="DEC1 MUX" value="ADC2" />
@@ -2361,6 +2363,8 @@
     </path>
 
     <path name="speaker-dmic-endfire">
+        <ctl name="DEC7 Volume" value="88"/>
+        <ctl name="DEC8 Volume" value="88"/>
         <ctl name="MicBias_V_Switch" value="V_1P80" />
         <ctl name="ADC1 Volume" value="4" />
         <ctl name="DEC1 MUX" value="ADC2" />
@@ -2421,10 +2425,14 @@
 
     <path name="voice-dmic-ef-tmus">
         <path name="dmic-endfire" />
+        <ctl name="DEC7 Volume" value="97"/>
+        <ctl name="DEC8 Volume" value="97"/>
     </path>
 
     <path name="voice-dmic-ef">
         <path name="dmic-endfire" />
+        <ctl name="DEC7 Volume" value="106"/>
+        <ctl name="DEC8 Volume" value="106"/>
     </path>
 
     <path name="voice-speaker-dmic-ef">

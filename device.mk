@@ -23,7 +23,6 @@ DEVICE_PACKAGE_OVERLAYS += \
 # Properties
 -include $(LOCAL_PATH)/vendor_props.mk
 
-PRODUCT_ENFORCE_RRO_TARGETS := *
 
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage/lineage-sdk
@@ -88,6 +87,7 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.2-impl \
     android.hardware.audio.effect@2.0-service \
     android.hardware.audio.effect@5.0-impl \
+    audio.primary.sdm710 \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
@@ -123,28 +123,18 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:/$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:/$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
-    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:/$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:/$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
-    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
-
-# Bluetooth
-PRODUCT_PACKAGES += \
-    android.hardware.bluetooth.audio@2.0-impl \
-    audio.bluetooth.default \
-    BluetoothResCommon \
-    libbthost_if \
-    libldacBT_dec \
-    vendor.qti.hardware.bluetooth_audio@2.0.vendor \
-    vendor.qti.hardware.btconfigstore@1.0.vendor
+    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
 # Camera
 PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0 \
     android.hardware.camera.provider@2.4-service_64 \
     android.hardware.camera.provider@2.4-impl \
+    libxml2 \
     Snap
 
 # CNE
@@ -159,7 +149,6 @@ PRODUCT_PACKAGES += \
     init.class_main.sh \
     init.crda.sh \
     init.mdm.sh \
-    init.oppo.fingerprints.sh \
     init.qcom.class_core.sh \
     init.qcom.coex.sh \
     init.qcom.crashdata.sh \
@@ -180,6 +169,7 @@ PRODUCT_PACKAGES += \
     init.oppo.debug.diag.rc \
     init.oppo.reserve.rc \
     init.oppo.sensor.rc \
+    init.oppo.vendor.fingerprint.rc \
     init.qcom.factory.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
@@ -193,7 +183,6 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service \
     android.hardware.graphics.mapper@2.0-impl-qti-display \
     gralloc.sdm710 \
-    hwcomposer.sdm710 \
     libdisplayconfig \
     libdisplayconfig.vendor \
     libhwc2on1adapter \
@@ -222,10 +211,6 @@ PRODUCT_PACKAGES += \
     vendor.oppo.hardware.biometrics.fingerprint@2.1 \
     android.hardware.biometrics.fingerprint@2.1-service.realme_sdm710
 
-# Gpi
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl
-	
 # Gps
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
@@ -235,13 +220,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf \
     $(LOCAL_PATH)/configs/gps/xtwifi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/xtwifi.conf
 
-# Hardware
-PRODUCT_BOARD_PLATFORM := sdm845
-PRODUCT_USES_QCOM_HARDWARE := true
-
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-impl \
     android.hardware.health@2.0-service
 
 # HIDL
@@ -255,6 +235,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ims-ext-common \
     ims_ext_common.xml
+
+# Input
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl
 
 # IPACM
 PRODUCT_PACKAGES += \
@@ -289,32 +273,21 @@ PRODUCT_PACKAGES += \
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs_dolby_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_dolby_audio.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs_ffmpeg.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_ffmpeg.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs_oppo_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oppo_performance.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs_oppo_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oppo_video.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_oppo_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_oppo_performance.xml \
     $(LOCAL_PATH)/configs/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs_performance_v1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance_v1.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_vendor.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs_vendor_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_vendor_audio.xml \
-	$(LOCAL_PATH)/configs/media/media_codecs_vendor_v1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_vendor_v1.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_performance_sdm710_v0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance_sdm710_v0.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_sdm710_v0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_sdm710_v0.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_vendor.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_vendor_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_vendor_audio.xml \
     $(LOCAL_PATH)/configs/media/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml \
-	$(LOCAL_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     $(LOCAL_PATH)/configs/media/media_profiles_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml \
-    $(LOCAL_PATH)/configs/media/system_properties.xml:$(TARGET_COPY_OUT_VENDOR)/etc/system_properties.xml
+    $(LOCAL_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_c2_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_video.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
-
-PRODUCT_PACKAGES += \
-    libstagefright_omx.vendor \
-    android.hardware.media.omx@1.0-service
 
 # Net
 PRODUCT_PACKAGES += \
@@ -339,17 +312,19 @@ PRODUCT_PACKAGES += \
     libOmxVidcCommon \
     libstagefrighthw
 
-# Power
-PRODUCT_PACKAGES += \
-    android.hardware.power@1.2-service-qti
-
 # Perf
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/perfconfigstore.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfconfigstore.xml
 
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.2-service-qti
+
 # QMI
 PRODUCT_PACKAGES += \
     libjson \
+    libqti_vndfwk_detect \
+    libqti_vndfwk_detect.vendor \
     libvndfwk_detect_jni.qti \
     libvndfwk_detect_jni.qti.vendor
 
@@ -360,34 +335,32 @@ PRODUCT_PACKAGES += \
 # QTI
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
-    $(LOCAL_PATH)/permissions/privapp-permissions-qti.xml:system/product/etc/permissions/privapp-permissions-qti.xml
-
-# QTI common
-TARGET_COMMON_QTI_COMPONENTS := \
-    perf \
-    bt
+    $(LOCAL_PATH)/permissions/privapp-permissions-qti.xml:system/product/etc/permissions/privapp-permissions-qti.xml \
+    $(LOCAL_PATH)/permissions/telephony_product_privapp-permissions-qti.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/telephony_product_privapp-permissions-qti.xml
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
 
-# QMI
-PRODUCT_PACKAGES += \
-    libqti_vndfwk_detect \
-    libqti_vndfwk_detect.vendor
-
 # RCS
 PRODUCT_PACKAGES += \
-    com.android.ims.rcsmanager \
     rcs_service_aidl \
     rcs_service_aidl.xml \
     rcs_service_api \
     rcs_service_api.xml
 
+# Recovery
+PRODUCT_PACKAGES += \
+    librecovery_updater_RMX1971
+
+# RenderScript HAL
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0-impl
+
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.4 \
-    android.hardware.radio.config@1.1 \
+    android.hardware.radio@1.2 \
+    android.hardware.radio.config@1.0 \
     android.hardware.radio.deprecated@1.0 \
     libprotobuf-cpp-full \
     librmnetctl \
@@ -397,27 +370,22 @@ PRODUCT_PACKAGES += \
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
-# Recovery
-PRODUCT_PACKAGES += \
-    librecovery_updater_RMX1971
-
-# Sensors
-PRODUCT_PACKAGES += \
-   android.hardware.sensors@1.0-service \
-   android.hardware.sensors@1.0-impl.realme_sdm710 \
-   libsensorndkbridge
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
-
 # Seccomp policy
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     $(LOCAL_PATH)/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-service \
+    android.hardware.sensors@1.0-impl.realme_sdm710 \
+   libsensorndkbridge
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
-
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -425,10 +393,12 @@ PRODUCT_PACKAGES += \
     qti_telephony_hidl_wrapper.xml \
     qti-telephony-utils \
     qti_telephony_utils.xml \
-    telephony-ext
+    telephony-ext \
+    qcrilhook
 
 PRODUCT_BOOT_JARS += \
-    telephony-ext
+    telephony-ext \
+    qcrilhook
 
 # TextClassifier
 PRODUCT_PACKAGES += \
@@ -465,17 +435,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     hostapd \
-    libwifi-hal-qcom \
     libwpa_client \
+    libwifi-hal-qcom \
+    vendor.qti.hardware.wifi.hostapd@1.0.vendor \
+    vendor.qti.hardware.wifi.supplicant@2.0.vendor \
     wpa_supplicant \
     wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/hostapd.accept:$(TARGET_COPY_OUT_VENDOR)/etc/hostapd/hostapd.accept \
-    $(LOCAL_PATH)/wifi/hostapd.deny:$(TARGET_COPY_OUT_VENDOR)/etc/hostapd/hostapd.deny \
-    $(LOCAL_PATH)/wifi/hostapd_default.conf:$(TARGET_COPY_OUT_VENDOR)/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
-    $(LOCAL_PATH)/wifi/icm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/icm.conf \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 

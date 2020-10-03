@@ -313,8 +313,9 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 # Perf
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/perfconfigstore.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfconfigstore.xml
+PRODUCT_BOOT_JARS += \
+    QPerformance \
+    UxPerformance
 
 # Power
 PRODUCT_PACKAGES += \

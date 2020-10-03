@@ -1211,46 +1211,46 @@ vendor/lib64/libhypnusclient.so
 # Oppo Voice Model firmware
 vendor/firmware/voice_amodel.bin
 
-# Perf
--framework/QPerformance.jar
--framework/UxPerformance.jar
-product/lib/vendor.qti.hardware.perf@2.0.so
-product/lib64/vendor.qti.hardware.perf@2.0.so
-lib/libqti_performance.so
-lib/libqti-perfd-client_system.so
-lib64/libqti_performance.so
-lib64/libqti-perfd-client_system.so
-vendor/bin/hw/vendor.qti.hardware.perf@2.0-service
-vendor/etc/init/vendor.qti.hardware.perf@2.0-service.rc
-vendor/etc/perf/commonresourceconfigs.xml
-vendor/etc/perf/perfconfigstore.xml
-vendor/etc/perf/perfboostsconfig.xml
-vendor/etc/perf/targetconfig.xml
-vendor/etc/perf/targetresourceconfigs.xml
-vendor/lib/libperfconfig.so
-vendor/lib/libperfgluelayer.so
-vendor/lib/libqti-perfd-client.so
-vendor/lib/libqti-perfd.so
-vendor/lib/libqti-util.so
-vendor/lib/libqti-utils.so
-vendor/lib/vendor.qti.hardware.perf@2.0.so
-vendor/lib64/libperfconfig.so
-vendor/lib64/libperfgluelayer.so
-vendor/lib64/libqti-perfd-client.so
-vendor/lib64/libqti-perfd.so
-vendor/lib64/libqti-util.so
-vendor/lib64/libqti-utils.so
-vendor/lib64/vendor.qti.hardware.perf@2.0.so
+# Perf - from Nokia/Phoenix_00WW/PNX_00WW_FIH-user-10-QKQ1.190828.002-00WW_4_31A-release-keys
+-framework/QPerformance.jar|557d4bb4e6009190a9a9df65c4c1fb0c37c2730a
+-framework/UxPerformance.jar|13c626f1a42fc084b64447460417afa1091f0c0f
+product/lib/vendor.qti.hardware.perf@2.0.so|40418545e76382263da60675996a881c1ac4ee10
+product/lib64/vendor.qti.hardware.perf@2.0.so|3131f461ecb897f68d02df0bf1027ca0a7d07c1d
+lib/libqti_performance.so|1e7a88e65d5b0ae568a9caf6db8c90619149a093
+lib/libqti-perfd-client_system.so|37370687ecc078e9c8c79c23c13722c5bc42f0e8
+lib64/libqti_performance.so|0f81325c963b496de66189222ea47a9f3c9c3251
+lib64/libqti-perfd-client_system.so|d98b22209889ce0b07fe9bf045c30c02dd625479
+vendor/bin/hw/vendor.qti.hardware.perf@2.0-service|1bfabae277be75c5caa2946868ca8d88ff05467f
+vendor/etc/init/vendor.qti.hardware.perf@2.0-service.rc|0101a3294311c2988060a00f7b25d8abf2f428f9
+vendor/etc/perf/commonresourceconfigs.xml|20f4ccc21170c43ea922d9b7936d9e6823c83fa1
+vendor/etc/perf/perfconfigstore.xml|440eeac31d2c8ff3309de65c01505310276b5e47
+vendor/etc/perf/perfboostsconfig.xml|04c53be260bb060fa886a21e7e8111f3916efa1a
+vendor/etc/perf/targetconfig.xml|788ced0689fe95a42e881ea86f3aefc0b4b64042
+vendor/etc/perf/targetresourceconfigs.xml|dea9afb72aef1aa48884bf70749f3d0b33d7ecb7
+vendor/lib/libperfconfig.so|8a21028e73a519762c6ada754efb9cbd12da7dfb
+vendor/lib/libperfgluelayer.so|dfabc7c38f54f0aba2a0ea7fbe6cd5c3822cee2d
+vendor/lib/libqti-perfd-client.so|c94451c1a19d460c6b919cb5ff84c76946a6d399
+vendor/lib/libqti-perfd.so|5aec6767719d3921a64c5c1c3faa47b77be814c2
+vendor/lib/libqti-util.so|2c3fdef8f812e5541634b17255480baa6a1f8650
+vendor/lib/libqti-utils.so|81d3d40097615baad8ff77a6ba3e6ec0706b4d71
+vendor/lib/vendor.qti.hardware.perf@2.0.so|79b74df48e39d46038b5ba13e7a0ae3513364a10
+vendor/lib64/libperfconfig.so|17f3e5d8bb1d5458c127392b0ef71b3ccdd9a0a1
+vendor/lib64/libperfgluelayer.so|b8d4864e2bc3b903e1a0d9c548686e5fac81fe54
+vendor/lib64/libqti-perfd-client.so|9db27376ef994c4c90eb90dc3c7c4e493c2902e4
+vendor/lib64/libqti-perfd.so|1ed9d8caa98d524c9cfcb9f960b0f13c290683f0
+vendor/lib64/libqti-util.so|c78b855b3909b01071ced5fc898add769de4a5b6
+vendor/lib64/libqti-utils.so|3726d65486928bc014e657960dc023d920524922
+vendor/lib64/vendor.qti.hardware.perf@2.0.so|3717b35807fd7b33dced6e311c3b609d57399363
 
-# Perf - IOP
-vendor/lib/vendor.qti.hardware.iop@1.0.so
-vendor/lib/vendor.qti.hardware.iop@2.0.so
-vendor/lib/hw/vendor.qti.hardware.iop@2.0-impl.so
-vendor/lib/libqti-iopd-client.so
-vendor/lib64/vendor.qti.hardware.iop@1.0.so
-vendor/lib64/vendor.qti.hardware.iop@2.0.so
-vendor/lib64/hw/vendor.qti.hardware.iop@2.0-impl.so
-vendor/lib64/libqti-iopd-client.so
+# Perf - IOP - from Nokia/Phoenix_00WW/PNX_00WW_FIH-user-10-QKQ1.190828.002-00WW_4_31A-release-keys
+vendor/lib/vendor.qti.hardware.iop@1.0.so|d1cbf74e7236bfe9a977bb7f609bb68fdf4d6750
+vendor/lib/vendor.qti.hardware.iop@2.0.so|f692b707076a933f865e3564e3263c3d7b7ae5a6
+vendor/lib/hw/vendor.qti.hardware.iop@2.0-impl.so|feaee7a3969d3f711db4fa5f12d1d4cca5fc2072
+vendor/lib/libqti-iopd-client.so|be2e00af81ea63b6f37fb8a884d7af7d1def566b
+vendor/lib64/vendor.qti.hardware.iop@1.0.so|8ccdc1463dcb554297b0c96d768126f0ca42b83a
+vendor/lib64/vendor.qti.hardware.iop@2.0.so|d5bafc1daeb1b417bbad1160f92e330610f09b8a
+vendor/lib64/hw/vendor.qti.hardware.iop@2.0-impl.so|9c5ff1a7e6bf4b88fac19f27a0cee2baecd18341
+vendor/lib64/libqti-iopd-client.so|7fddeeb59ebe01eb2e87de56fe2c2d0899806bc9
 
 # Peripheral manager
 vendor/bin/pm-proxy

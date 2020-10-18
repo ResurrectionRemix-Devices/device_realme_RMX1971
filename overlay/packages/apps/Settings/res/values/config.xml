@@ -19,6 +19,8 @@
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
 <resources>
+    <string name="rr_maintainer_summary">LuckYVii</string>
+
     <!-- Battery Health -->
     <string name="config_batChargeCycle">/sys/class/power_supply/battery/cycle_count</string>
     <string name="config_batDesCap">/sys/class/power_supply/battery/charge_full</string>

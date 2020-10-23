@@ -148,7 +148,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-service_64 \
     android.hardware.camera.provider@2.4-impl \
     libxml2 \
-    Snap
+    GCam
 
 # CNE
 PRODUCT_PACKAGES += \

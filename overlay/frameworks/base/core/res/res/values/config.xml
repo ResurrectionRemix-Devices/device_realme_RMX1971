@@ -450,8 +450,10 @@
         <item>"/system/lib64/libsurfaceflinger.so"</item>
     </string-array>
 
-    <!-- Whether to post reset runnable for all clients. Needed for some older
-         vendor fingerprint HAL implementations. -->
+    <!-- Cleanup unused fingerprints -->
+    <bool name="config_cleanupUnusedFingerprints">false</bool>
+
+    <!-- Whether to post reset runnable for all clients. Needed for some older vendor fingerprint HAL implementations. -->
     <bool name="config_fingerprintPostResetRunnableForAllClients">true</bool>
 
     <!-- True if the firmware supports connected MAC randomization -->
